@@ -1,3 +1,7 @@
+apiVersion: v1                      
+kind: Namespace
+metadata:
+  name: pacman-app
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: Channel
@@ -10,9 +14,7 @@ metadata:
     apps.open-cluster-management.io/github-path: deploy
 spec:
   type: GitHub
-  pathname: https://github.com/mdelder/k8s-pacman-app.git
-  # secretRef:
-  #   name: github-credentials
+  pathname: https://github.com/purefield/k8s-pacman-app.git
 ---
 apiVersion: app.k8s.io/v1beta1
 kind: Application
@@ -43,8 +45,6 @@ metadata:
     app.kubernetes.io/name: pacman
 spec:
   channel: pacman-app/pacman-app-latest
-  hooksecretref:
-    name: toweraccess
   placement:
     placementRef:
       kind: PlacementRule
@@ -60,14 +60,13 @@ spec:
   - status: "True"
     type: ManagedClusterConditionAvailable
   clusterSelector:
-    clusterReplicas: 2
+    clusterReplicas: 1
     matchExpressions:
-    - key: region
+    - key: clusterid
       operator: In
       values:
-      - us-east-1
-      - us-west-1
-      - europe-west3
+      - cluster1
+      - cluster2
+      - cluster3
     matchLabels:
-      environment: dev
-      apps/pacman: deployed
+      app-env-pacman: development
