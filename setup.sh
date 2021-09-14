@@ -59,3 +59,7 @@ oc -n pacman-app-lb get pods
 PACMAN_LB_ROUTE=$(oc -n pacman-app-lb get route pacman-app-lb -o jsonpath='{.status.ingress[*].host}')
 curl -k https://${PACMAN_LB_ROUTE}
 cd -
+
+# create application
+oc delete -f pacman-app.yaml
+oc apply -f pacman-app.yaml

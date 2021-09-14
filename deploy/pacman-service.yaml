@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: pacman
+  name: pacman-app
   namespace: pacman-app
   labels:
-    name: pacman
-    app.kubernetes.io/name: pacman
+    name: pacman-app
+    app.kubernetes.io/name: pacman-app
 spec:
   type: ClusterIP
   ports:
@@ -13,5 +13,5 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    name: pacman
-    app.kubernetes.io/name: pacman
+    name: pacman-app
+    app.kubernetes.io/name: pacman-app
