@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pacman-app-lb
+  name: pacman-app-lb-service
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: pacman-app-lb
+  sessionAffinity: None
+  type: ClusterIP
