@@ -70,8 +70,8 @@ frontend  main
 #---------------------------------------------------------------------
 backend app
     balance roundrobin
-    option httpchk GET / HTTP/1.1\r\nHost:\ pacman-ingress.apps.ocp.webwim.com
-    http-request set-header Host pacman-ingress.apps.ocp.webwim.com
+    option httpchk GET / HTTP/1.1\r\nHost:\ pacman-app.kcdc.rhlabs.io
+    http-request set-header Host pacman-app.kcdc.rhlabs.io
     mode http 
         server cluster1 pacman-pacman-app.apps.ocp.webwim.com:80 check
         server cluster2 pacman-pacman-app.apps.gcp.mc.gcp.rhlabs.io:80 check
