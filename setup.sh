@@ -27,7 +27,7 @@ oc -n pacman-app-lb create route edge pacman-app-lb \
    --hostname=${HAPROXY_LB_ROUTE}
 echo $HAPROXY_LB_ROUTE
 # Define the variable of `PACMAN_INGRESS`
-PACMAN_INGRESS=pacman-ingress.$(oc get ingresses.config.openshift.io cluster -o jsonpath='{ .spec.domain }')
+PACMAN_INGRESS=pacman-app.kcdc.rhlabs.io
 # Define the variable of `PACMAN_CLUSTER1`
 oc-login 1
 PACMAN_CLUSTER1=pacman-pacman-app.$(oc get ingresses.config.openshift.io cluster -o jsonpath='{ .spec.domain }')
