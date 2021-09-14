@@ -1,12 +1,13 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: pacman
+  name: pacman-app-lb
   namespace: pacman-app
   labels:
-    app.kubernetes.io/name: pacman
+    app.kubernetes.io/name: pacman-app
 spec:
   path: "/"
   to:
     kind: Service
-    name: pacman
+    name: pacman-app
+  subdomain: pacman-app
